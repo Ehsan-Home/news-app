@@ -1,7 +1,10 @@
+import NewsArticleGrid from "@/components/NewsArticleGrid";
+
 export default function Home() {
   return (
     <>
-      <main>News App</main>
+      <h1>Breaking News</h1>
+      <NewsArticleGrid />
     </>
   );
 }
