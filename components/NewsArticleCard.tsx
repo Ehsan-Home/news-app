@@ -11,11 +11,11 @@ const NewArticleCard = ({
   const validImageURL =
     urlToImage?.startsWith("http") || urlToImage?.startsWith("https")
       ? urlToImage
-      : undefined;
+      : "https://images.unsplash.com/photo-1503694978374-8a2fa686963a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80";
 
   return (
     <a href={url}>
-      <Card style={{ width: "18rem" }}>
+      <Card className="h-100">
         <Card.Img variant="top" src={validImageURL} />
         <Card.Body>
           <Card.Title>{title}</Card.Title>
