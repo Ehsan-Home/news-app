@@ -1,3 +1,4 @@
+import NewArticleCard from "@/components/NewsArticleCard";
 import NewsArticleGrid from "@/components/NewsArticleGrid";
 import { NewsArticles, Article } from "@/models/NewsArticles";
 import { GetServerSideProps } from "next";
@@ -22,8 +23,8 @@ export default function BreakingNewsPage({ articles }: NewsArticles) {
         <title key="title">Breaking News!</title>
       </Head>
       <h1>Breaking News</h1>
-      {JSON.stringify(articles)}
       <NewsArticleGrid />
+      <NewArticleCard article={articles[0]} />
     </>
   );
 }
