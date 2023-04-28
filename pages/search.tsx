@@ -13,7 +13,7 @@ const Search = () => {
     const searchQueryInput = document.getElementById(
       "search-query"
     ) as HTMLInputElement;
-    const searchQuery = searchQueryInput.value;
+    const searchQuery = searchQueryInput.value.trim();
     if (searchQuery.length === 0) {
       return;
     }
