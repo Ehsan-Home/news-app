@@ -1,14 +1,32 @@
-import { FormEvent } from "react";
-import { Button, Form } from "react-bootstrap";
+import NewsArticleGrid from "@/components/NewsArticleGrid";
+import { Article, NewsArticles } from "@/models/NewsArticles";
+import { FormEvent, useState } from "react";
+import { Button, Form, Spinner } from "react-bootstrap";
 
 const Search = () => {
+  const [searchResults, setSearchResults] = useState<Article[] | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const searchQueryInput = document.getElementById(
       "search-query"
     ) as HTMLInputElement;
     const searchQuery = searchQueryInput.value;
-    console.log(searchQuery);
+    if (searchQuery.length === 0) {
+      return;
+    }
+    setSearchResults(null);
+    setLoading(true);
+    fetchSearchResult(searchQuery);
+  };
+
+  const fetchSearchResult = async (searchQuery: string) => {
+    const response = await fetch(`./api/searchQuery?q=${searchQuery}`);
+    const searchResults = await response.json();
+    setLoading(false);
+    setSearchResults(searchResults);
   };
 
   return (
@@ -23,7 +41,19 @@ const Search = () => {
             placeholder="E.g. Sports, politics,..."
           ></Form.Control>
         </Form.Group>
-        <Button type="submit">Submit</Button>
+        <Button type="submit" className="mb-3">
+          Submit
+        </Button>
+        <div className="d-flex flex-column align-items-center">
+          {loading && <Spinner />}
+          {error && <div>Error happened</div>}
+          {searchResults && searchResults.length === 0 && (
+            <div>Nothing found</div>
+          )}
+          {searchResults && searchResults.length > 0 && (
+            <NewsArticleGrid articles={searchResults} />
+          )}
+        </div>
       </Form>
     </>
   );
