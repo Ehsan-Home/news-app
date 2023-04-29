@@ -1,7 +1,8 @@
 import NewsArticleGrid from "@/components/NewsArticleGrid";
 import { NewsArticles } from "@/models/NewsArticles";
-import { GetServerSideProps, GetStaticPaths, GetStaticProps } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
+import { Alert } from "react-bootstrap";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const categorySlugs = [
@@ -43,6 +44,11 @@ const CategoryPage = ({ articles }: NewsArticles) => {
   return (
     <>
       <h3>{category} :</h3>
+      <Alert>
+        This is page uses <strong>getStaticProps</strong> for very high page
+        loading speed and <strong>incremental static regeneration</strong> to
+        show data not older than <strong>5 minutes</strong>.
+      </Alert>
       <NewsArticleGrid articles={articles} />
     </>
   );
