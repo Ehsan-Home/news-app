@@ -26,9 +26,6 @@ export const getStaticProps: GetStaticProps<NewsArticles> = async ({
   params,
 }) => {
   const category = params?.category?.toString();
-  if (!category) {
-    return;
-  }
 
   const response = await fetch(
     `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${process.env.NEWS_API_KEY}`
