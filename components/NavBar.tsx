@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React, { Component } from "react";
 import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
 
@@ -18,13 +19,17 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home">Breaking News</Nav.Link>
-            <Nav.Link href="#link">Search</Nav.Link>
+            <Nav.Link as={Link} href="/">
+              Breaking News
+            </Nav.Link>
+            <Nav.Link as={Link} href="/search">
+              Search
+            </Nav.Link>
             <NavDropdown title="Categories" id="basic-nav-dropdown">
               {categories.map((category) => {
                 return (
                   <React.Fragment key={category}>
-                    <NavDropdown.Item href="#action/3.1">
+                    <NavDropdown.Item href={`/categories/${category}`}>
                       {category}
                     </NavDropdown.Item>
                   </React.Fragment>
