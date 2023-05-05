@@ -29,7 +29,10 @@ const NavBar = () => {
               {categories.map((category) => {
                 return (
                   <React.Fragment key={category}>
-                    <NavDropdown.Item href={`/categories/${category}`}>
+                    <NavDropdown.Item
+                      as={Link}
+                      href={`/categories/${category}`}
+                    >
                       {category}
                     </NavDropdown.Item>
                   </React.Fragment>
