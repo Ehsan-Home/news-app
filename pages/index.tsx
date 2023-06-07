@@ -1,16 +1,14 @@
+import Image from "next/image";
 import Link from "next/link";
 import { TypeAnimation } from "react-type-animation";
+import img from "../images/news-image.png";
 
 export default function BreakingNewsPage() {
   return (
     <>
-      {/* <img
-        src={img}
-        class="mx-auto d-block mt-3"
-        width={150}
-        height={150}
-        alt="GitHub logo"
-      ></img> */}
+      <div className="text-center">
+        <Image src={img} alt="news image"></Image>
+      </div>
       <div className="text-center mt-3">
         <h1 className="display-3" style={{ color: "#0d6efd" }}>
           <TypeAnimation
@@ -41,11 +39,8 @@ export default function BreakingNewsPage() {
           {" "}
           Next.js server and client side rendering
         </strong>{" "}
-        to deliver real-time news updates, ensuring you never miss a beat. With
-        its sleek and intuitive interface, InfoSphere provides a seamless
-        browsing experience, allowing you to effortlessly navigate through a
-        wide range of topics, from politics and business to science and
-        entertainment.
+        to deliver real-time news updates, ensuring you never miss a beat in
+        wide range of topics, from politics to entertainment.
       </p>
       <div className="d-flex justify-content-center">
         <div className="p-2">
