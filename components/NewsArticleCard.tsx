@@ -14,7 +14,7 @@ const NewArticleCard = ({
       : "https://images.unsplash.com/photo-1503694978374-8a2fa686963a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80";
 
   return (
-    <a href={url}>
+    <a href={url} target="_blank" rel="noopener noreferrer">
       <Card className="h-100 shadow-sm">
         <Card.Img variant="top" src={validImageURL} />
         <Card.Header as="h6">{title}</Card.Header>
