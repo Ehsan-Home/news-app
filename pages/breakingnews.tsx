@@ -1,3 +1,4 @@
+import GeneralError from "@/components/GeneralError";
 import NewArticleCard from "@/components/NewsArticleCard";
 import NewsArticleGrid from "@/components/NewsArticleGrid";
 import { NewsArticles, Article } from "@/models/NewsArticles";
@@ -13,11 +14,14 @@ export const getServerSideProps: GetServerSideProps<
   );
   const responseJSON: NewsArticles = await response.json();
   return {
-    props: { articles: responseJSON.articles },
+    props: { articles: responseJSON.articles || null },
   };
 };
 
 export default function BreakingNewsPage({ articles }: NewsArticles) {
+  if (!articles) {
+    return <GeneralError />;
+  }
   return (
     <>
       <Head>

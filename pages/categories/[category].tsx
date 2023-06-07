@@ -1,3 +1,4 @@
+import GeneralError from "@/components/GeneralError";
 import NewsArticleGrid from "@/components/NewsArticleGrid";
 import { NewsArticles } from "@/models/NewsArticles";
 import { GetStaticPaths, GetStaticProps } from "next";
@@ -33,7 +34,7 @@ export const getStaticProps: GetStaticProps<NewsArticles> = async ({
   );
   const categoryNews: NewsArticles = await response.json();
   return {
-    props: { articles: categoryNews.articles },
+    props: { articles: categoryNews.articles || null },
     revalidate: 5 * 60,
   };
 };
@@ -45,6 +46,9 @@ const CategoryPage = ({ articles }: NewsArticles) => {
     .charAt(0)
     .toUpperCase()
     .concat(router.query.category?.toString().slice(1));
+  if (!articles) {
+    return <GeneralError />;
+  }
   return (
     <>
       <h3>{category}</h3>

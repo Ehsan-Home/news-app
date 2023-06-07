@@ -1,3 +1,4 @@
+import GeneralError from "@/components/GeneralError";
 import NewsArticleGrid from "@/components/NewsArticleGrid";
 import { Article, NewsArticles } from "@/models/NewsArticles";
 import { FormEvent, useState } from "react";
@@ -23,10 +24,15 @@ const Search = () => {
   };
 
   const fetchSearchResult = async (searchQuery: string) => {
-    const response = await fetch(`./api/searchQuery?q=${searchQuery}`);
-    const searchResults = await response.json();
-    setLoading(false);
-    setSearchResults(searchResults);
+    try {
+      const response = await fetch(`./api/searchQuery?q=${searchQuery}`);
+      const searchResults = await response.json();
+      setLoading(false);
+      setSearchResults(searchResults);
+    } catch (error) {
+      setLoading(false);
+      setError(true);
+    }
   };
 
   return (
@@ -51,7 +57,7 @@ const Search = () => {
         </Button>
         <div className="d-flex flex-column align-items-center">
           {loading && <Spinner />}
-          {error && <div>Error happened</div>}
+          {error && <GeneralError />}
           {searchResults && searchResults.length === 0 && (
             <div>Nothing found</div>
           )}
