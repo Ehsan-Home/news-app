@@ -13,7 +13,7 @@ const NavBar = () => {
     "technology",
   ];
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="dark" expand="lg" variant="dark">
       <Container>
         <Navbar.Brand as={Link} href="/">
           InfoSphere
