@@ -15,7 +15,7 @@ const NewArticleCard = ({
 
   return (
     <a href={url}>
-      <Card className="h-100">
+      <Card className="h-100 shadow-sm">
         <Card.Img variant="top" src={validImageURL} />
         <Card.Body>
           <Card.Title>{title}</Card.Title>
