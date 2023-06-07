@@ -40,10 +40,14 @@ export const getStaticProps: GetStaticProps<NewsArticles> = async ({
 
 const CategoryPage = ({ articles }: NewsArticles) => {
   const router = useRouter();
-  const category = router.query.category?.toString();
+  const category = router.query.category
+    ?.toString()
+    .charAt(0)
+    .toUpperCase()
+    .concat(router.query.category?.toString().slice(1));
   return (
     <>
-      <h3>{category} :</h3>
+      <h3>{category}</h3>
       <Alert>
         This is page uses <strong>getStaticProps</strong> for very high page
         loading speed and <strong>incremental static regeneration</strong> to
