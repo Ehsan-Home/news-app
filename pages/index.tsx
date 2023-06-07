@@ -1,35 +1,67 @@
-import NewArticleCard from "@/components/NewsArticleCard";
-import NewsArticleGrid from "@/components/NewsArticleGrid";
-import { NewsArticles, Article } from "@/models/NewsArticles";
-import { GetServerSideProps } from "next";
-import Head from "next/head";
-import { Alert } from "react-bootstrap";
+import Image from "next/image";
+import Link from "next/link";
+import { TypeAnimation } from "react-type-animation";
+import img from "../images/news-image.png";
 
-export const getServerSideProps: GetServerSideProps<
-  NewsArticles
-> = async () => {
-  const response = await fetch(
-    `https://newsapi.org/v2/top-headlines?country=us&apiKey=${process.env.NEWS_API_KEY}`
-  );
-  const responseJSON: NewsArticles = await response.json();
-  return {
-    props: { articles: responseJSON.articles },
-  };
-};
-
-export default function BreakingNewsPage({ articles }: NewsArticles) {
+export default function BreakingNewsPage() {
   return (
     <>
-      <Head>
-        <title key="title">Breaking News!</title>
-      </Head>
-      <h1>Breaking News</h1>
-      <Alert>
-        This page uses <strong>getServerSideProps</strong> to fetch data
-        server-side on every request. This allows search engines to crawl the
-        page content and <strong>improves SEO</strong>.
-      </Alert>
-      <NewsArticleGrid articles={articles} />
+      <div className="text-center">
+        <Image src={img} alt="news image"></Image>
+      </div>
+      <div className="text-center mt-3">
+        <h1 className="display-3" style={{ color: "#0d6efd" }}>
+          <TypeAnimation
+            sequence={[
+              "InfoSphere",
+              2000,
+              "Dive into business",
+              1000,
+              "Dive into sports",
+              1000,
+              "Dive into tech",
+              1000,
+              "InfoSphere",
+            ]}
+            wrapper="span"
+            cursor={true}
+            repeat={0}
+          />
+        </h1>
+      </div>
+      <p className="lead text-center">
+        📰 Empowering Minds with Real-Time News
+      </p>
+      <p className="text-center text-secondary">
+        Introducing InfoSphere, an innovative news web app designed to keep you
+        informed and engaged in a rapidly evolving world. InfoSphere leverages
+        <strong style={{ color: "green" }}>
+          {" "}
+          Next.js server and client side rendering
+        </strong>{" "}
+        to deliver real-time news updates, ensuring you never miss a beat in
+        wide range of topics, from politics to entertainment.
+      </p>
+      <div className="d-flex justify-content-center">
+        <div className="p-2">
+          <Link
+            role="button"
+            href="/breakingnews"
+            className="btn btn-lg btn-primary"
+          >
+            Breaking News
+          </Link>
+        </div>
+        <div className="p-2">
+          <Link role="button" href="/search" className="btn btn-lg btn-dark">
+            Search
+          </Link>
+        </div>
+      </div>
+      <div className="text-secondary text-center my-4">
+        {new Date().getFullYear()} @
+        <a href="https://ehsanghasaei.netlify.app/">Ehsan Ghasaei</a>
+      </div>
     </>
   );
 }
