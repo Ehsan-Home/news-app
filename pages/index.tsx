@@ -1,5 +1,5 @@
-import Head from "next/head";
-import { Alert } from "react-bootstrap";
+import Link from "next/link";
+import { TypeAnimation } from "react-type-animation";
 
 export default function BreakingNewsPage() {
   return (
@@ -12,8 +12,23 @@ export default function BreakingNewsPage() {
         alt="GitHub logo"
       ></img> */}
       <div className="text-center mt-3">
-        <h1 className="display-1" style={{ color: "#0d6efd" }}>
-          InfoSphere
+        <h1 className="display-3" style={{ color: "#0d6efd" }}>
+          <TypeAnimation
+            sequence={[
+              "InfoSphere",
+              2000,
+              "Dive into business",
+              1000,
+              "Dive into sports",
+              1000,
+              "Dive into tech",
+              1000,
+              "InfoSphere",
+            ]}
+            wrapper="span"
+            cursor={true}
+            repeat={0}
+          />
         </h1>
       </div>
       <p className="lead text-center">
@@ -26,7 +41,7 @@ export default function BreakingNewsPage() {
         never miss a beat. With its sleek and intuitive interface, InfoSphere
         provides a seamless browsing experience, allowing you to effortlessly
         navigate through a wide range of topics, from politics and business to
-        science and entertainment. Whether you're a news enthusiast, a
+        science and entertainment. Whether you&apos;re a news enthusiast, a
         professional seeking the latest trends, or simply looking to stay
         informed, InfoSphere is your go-to destination for staying ahead in an
         interconnected global society. Embrace the power of knowledge and embark
@@ -34,18 +49,18 @@ export default function BreakingNewsPage() {
       </p>
       <div className="d-flex justify-content-center">
         <div className="p-2">
-          <a
+          <Link
             role="button"
             href="/breakingnews"
             className="btn btn-lg btn-primary"
           >
             Breaking News
-          </a>
+          </Link>
         </div>
         <div className="p-2">
-          <a role="button" href="/search" className="btn btn-lg btn-dark">
+          <Link role="button" href="/search" className="btn btn-lg btn-dark">
             Search
-          </a>
+          </Link>
         </div>
       </div>
       <div className="text-secondary text-center my-4">
