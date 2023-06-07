@@ -17,11 +17,11 @@ const NewArticleCard = ({
     <a href={url}>
       <Card className="h-100 shadow-sm">
         <Card.Img variant="top" src={validImageURL} />
+        <Card.Header as="h6">{title}</Card.Header>
         <Card.Body>
-          <Card.Title>{title}</Card.Title>
           <Card.Text>{description}</Card.Text>
-          <Card.Footer>{publishedAt}</Card.Footer>
         </Card.Body>
+        <Card.Footer className="text-muted">{publishedAt}</Card.Footer>
       </Card>
     </a>
   );
