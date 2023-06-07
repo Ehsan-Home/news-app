@@ -4,7 +4,7 @@ const NotFoundPage = () => {
   return (
     <>
       <div className="text-center mt-3">
-        <h1 className="display-3" style={{ color: "#0d6efd" }}>
+        <h1 className="display-3" style={{ color: "red" }}>
           Page Not Found!
         </h1>
       </div>
