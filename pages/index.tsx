@@ -37,15 +37,15 @@ export default function BreakingNewsPage() {
       <p className="text-center text-secondary">
         Introducing InfoSphere, an innovative news web app designed to keep you
         informed and engaged in a rapidly evolving world. InfoSphere leverages
-        cutting-edge technology to deliver real-time news updates, ensuring you
-        never miss a beat. With its sleek and intuitive interface, InfoSphere
-        provides a seamless browsing experience, allowing you to effortlessly
-        navigate through a wide range of topics, from politics and business to
-        science and entertainment. Whether you&apos;re a news enthusiast, a
-        professional seeking the latest trends, or simply looking to stay
-        informed, InfoSphere is your go-to destination for staying ahead in an
-        interconnected global society. Embrace the power of knowledge and embark
-        on a transformative journey with InfoSphere.
+        <strong style={{ color: "green" }}>
+          {" "}
+          Next.js server and client side rendering
+        </strong>{" "}
+        to deliver real-time news updates, ensuring you never miss a beat. With
+        its sleek and intuitive interface, InfoSphere provides a seamless
+        browsing experience, allowing you to effortlessly navigate through a
+        wide range of topics, from politics and business to science and
+        entertainment.
       </p>
       <div className="d-flex justify-content-center">
         <div className="p-2">
